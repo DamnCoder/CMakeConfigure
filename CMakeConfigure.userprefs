@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="CMakeConfigure/CMakeConfigure.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CMakeConfigure/Program.cs">
+    <Files>
+      <File FileName="CMakeConfigure/Program.cs" Line="36" Column="50" />
+      <File FileName="CMakeConfigure/PathsHelp.cs" Line="47" Column="4" />
+      <File FileName="CMakeConfigure/CMakeHelper.cs" Line="54" Column="4" />
+      <File FileName="CMakeConfigure/ProjectConfig.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../../../../DamnCode/Projects/AppTemplate/Assets/DC_JSON/Adapters/GenericAdapter.cs" line="145" offsetX="696" offsetY="2160" expression="method" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>
