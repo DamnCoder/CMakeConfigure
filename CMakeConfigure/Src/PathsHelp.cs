@@ -43,8 +43,8 @@ namespace CMakeConfigure
 
 		public static void GetAllDirectoryPaths(string rootPath, string searchPath, List<string> outPathList)
 		{
-			var searchDirInfo = new DirectoryInfo(searchPath);
 			var rootDirInfo = new DirectoryInfo(rootPath);
+			var searchDirInfo = new DirectoryInfo(searchPath);
 
 			foreach(var directoryInfo in searchDirInfo.EnumerateDirectories())
 			{
