@@ -28,6 +28,8 @@ SET(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
 # Generate the executable from the sources
 ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
+SET_PROPERTY(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+
 #[EXTERNAL_PROJECTS]
 
 # Set the location for executable installation
