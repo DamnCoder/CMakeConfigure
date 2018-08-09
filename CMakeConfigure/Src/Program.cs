@@ -109,7 +109,6 @@ namespace CMakeConfigure
 			pathList.Clear();
 
 			// Source files
-			//string codeSrcFolder = Path.Combine(codeFolder, srcFolder);
 			string completSrcPath = Path.Combine(rootIncludePath, srcFolder);
 			PathsHelp.GetAllFilesPaths(completSrcPath, completSrcPath, srcfileExtensions, pathList);
 			newLinesTable.Add(PRJ_SOURCES_KEY, CMakeHelper.CreateSetMultiline("SOURCES", pathList));

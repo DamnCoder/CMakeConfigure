@@ -25,6 +25,11 @@ namespace CMakeConfigure
 
 		public static void GetAllFilesPaths(string rootPath, string searchPath, string [] fileExtensionArray, List<string> outPathList)
 		{
+         if(!Directory.Exists(searchPath))
+         {
+            return;
+         }
+
 			var dirInfo = new DirectoryInfo(searchPath);
 			foreach(var fileInfo in dirInfo.EnumerateFiles())
 			{
