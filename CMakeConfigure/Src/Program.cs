@@ -9,19 +9,18 @@ namespace CMakeConfigure
 	{
 		public static void Main (string[] args)
 		{
-			string[] finalArgs = new string[ProjectConfig.LIBRARIES_INDEX + ProjectConfig.PROJECT_EXTERNALS.Split(' ').Length];
+			string[] finalArgs = new string[(int)EArgType.MAX_ARGS];
 			if(!ProjectConfig.FillArgs(args, ref finalArgs))
 			{
 				Console.WriteLine("CORRECT USE: mono CMakeConfigure.exe " +
 					"<templates_path> <output_path> " +
-					"<template_type> <project_name> <build_type> <subdirectory1> <subdirectory2>...");
+					"<template_type> <build_type>");
 				return;
 			}
 			
 			string templatesPath = finalArgs[(int)EArgType.TEMPLATES_PATH];
 			string outputPath = finalArgs[(int)EArgType.OUTPUT_PATH];
 			string projectType = finalArgs[(int)EArgType.PROJECT_TYPE];
-			string projectName = finalArgs[(int)EArgType.PROJECT_NAME];
 			string buildType = finalArgs[(int)EArgType.PROJECT_ENVIRONMENT];
 
 			// 

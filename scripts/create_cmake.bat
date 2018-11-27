@@ -8,10 +8,8 @@ set EXECUTABLE=.\Build\CMakeConfigure.exe
 set FILE_OUTPUT_PATH=.\Test\project
 set TEMPLATES_PATH=.\Templates
 
-set PROJECT_NAME=Test
 set PROJECT_TYPE=EXECUTABLE
 set PROJECT_ENVIRONMENT=Debug
-set PROJECT_EXTERNALS=project_a project_b
 
 echo TEST FOR CMAKECONFIGURE
 

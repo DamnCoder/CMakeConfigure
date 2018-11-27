@@ -1,4 +1,5 @@
 Test
-- external\project_a
--- external\project_aa
-- external\project_b
+- externals\project_a
+-- externals\project_aa
+--- externals\project_aaa
+- externals\project_b

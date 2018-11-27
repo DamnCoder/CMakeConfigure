@@ -14,8 +14,6 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../cmake_modules)
 SET(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/../cmake_include)
 SET(EXTERNALS_PATH ${PROJECT_SOURCE_DIR}/../externals)
 
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-
 INCLUDE(${CMAKE_INCLUDE_PATH}/CMake-Include.txt)
 
 # C++ Dialect
@@ -55,19 +53,11 @@ INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_b/project/include)
 INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_a/externals/project_aa/project/include)
 INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_a/externals/project_aa/externals/project_aaa/project/include)
 
-#ADD_DEPENDENCIES(${PROJECT_NAME} 
-	#PROJECT_B
-	#PROJECT_A
-#)
-
 #[EXTERNAL_TARGET]
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-	PROJECT_A
-	PROJECT_B
-	#project_aa
-	#project_aaa
+	project_a
+	project_b
 )
-
 
 # Set the location for executable installation
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${EXECUTABLE_OUTPUT_PATH})

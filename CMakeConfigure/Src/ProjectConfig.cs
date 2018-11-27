@@ -7,11 +7,10 @@ namespace CMakeConfigure
 	public enum EArgType
 	{
 		TEMPLATES_PATH = 0,
-		OUTPUT_PATH = 1,
-		PROJECT_TYPE = 2,
-		PROJECT_NAME = 3,
-		PROJECT_ENVIRONMENT = 4,
-		MAX_ARGS = 5
+		OUTPUT_PATH,
+		PROJECT_TYPE,
+		PROJECT_ENVIRONMENT,
+		MAX_ARGS
 	}
 
 	public static class ProjectConfig
@@ -52,18 +51,13 @@ namespace CMakeConfigure
 
 		public static readonly string EXTERNAL_KEY = "#[EXTERNAL_PROJECTS]";
 		public static readonly string EXTERNAL_TARGET = "#[EXTERNAL_TARGET]";
-
-		// CONSTANTS
-		public static readonly uint LIBRARIES_INDEX = (int) EArgType.MAX_ARGS;
 		
 		// TEST VALUES
 		public static readonly string TEMPLATES_PATH = @"..\Templates";
 		public static readonly string FILE_OUTPUT_PATH = @"..\Test\project";
 
 		public static readonly string PROJECT_TYPE = "EXECUTABLE";
-		public static readonly string PROJECT_NAME = "Test";
 		public static readonly string PROJECT_ENVIRONMENT = "Debug";
-		public static readonly string PROJECT_EXTERNALS = "project_a project_b";
 
 		// METHODS
 		public static string GetTemplateFilename(string templateType)
@@ -94,21 +88,15 @@ namespace CMakeConfigure
 
 		public static bool FillArgs(string[] args, ref string[] outArgs)
 		{
-			if (args.Length < LIBRARIES_INDEX)
+			if (args.Length < (int)EArgType.MAX_ARGS)
 			{
 #if DEBUG
 
 				outArgs[(int)EArgType.TEMPLATES_PATH] = TEMPLATES_PATH;
 				outArgs[(int)EArgType.OUTPUT_PATH] = FILE_OUTPUT_PATH;
 				outArgs[(int)EArgType.PROJECT_TYPE] = PROJECT_TYPE;
-				outArgs[(int)EArgType.PROJECT_NAME] = PROJECT_NAME;
 				outArgs[(int)EArgType.PROJECT_ENVIRONMENT] = PROJECT_ENVIRONMENT;
 
-				var externalArray = PROJECT_EXTERNALS.Split(' ');
-				for (uint i = 0; i < externalArray.Length; ++i)
-				{
-					outArgs[LIBRARIES_INDEX + i] = externalArray[i];
-				}
 				return true;
 #else
 				return false;
@@ -118,13 +106,7 @@ namespace CMakeConfigure
 			outArgs[(int)EArgType.TEMPLATES_PATH] = args[(int)EArgType.TEMPLATES_PATH];
 			outArgs[(int)EArgType.OUTPUT_PATH] = args[(int)EArgType.OUTPUT_PATH];
 			outArgs[(int)EArgType.PROJECT_TYPE] = args[(int)EArgType.PROJECT_TYPE];
-			outArgs[(int)EArgType.PROJECT_NAME] = args[(int)EArgType.PROJECT_NAME];
 			outArgs[(int)EArgType.PROJECT_ENVIRONMENT] = args[(int)EArgType.PROJECT_ENVIRONMENT];
-
-			for (uint i = LIBRARIES_INDEX; i < args.Length; ++i)
-			{
-				outArgs[i] = args[i];
-			}
 
 			return true;
 		}

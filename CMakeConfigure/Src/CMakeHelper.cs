@@ -152,9 +152,9 @@ namespace CMakeConfigure
 			outExternalProjects.Add("TARGET_LINK_LIBRARIES(${PROJECT_NAME}");
 			foreach (var projectList in externalList)
 			{
-				foreach (var project in projectList)
+				if (0 < projectList.Count)
 				{
-					outExternalProjects.Add("\t" + project);
+					outExternalProjects.Add("\t" + projectList[0]);
 				}
 			}
 			outExternalProjects.Add(")");
