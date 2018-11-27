@@ -1,17 +1,21 @@
 @echo off
 
 set bat_dir=%~dp0
-set directory=%bat_dir%..\Build
-set executable_name=%bat_dir%..\Build\CMakeConfigure.exe
-set src=%bat_dir%..\CMakeConfigure\Src\*.cs
+set build_dir=%bat_dir%..\Build
+set bin_path=%bat_dir%..\Build\CMakeConfigure.exe
 
-echo We need the folder: %directory%
+set cscomp=C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe
+set srcs=%bat_dir%..\CMakeConfigure\Src\*.cs
 
-if not exist %directory% (
-	echo %directory% does not exists so we create it
-	mkdir %directory%
+echo We need the folder: %build_dir%
+
+if not exist %build_dir% (
+	echo %build_dir% does not exists so we create it
+	mkdir %build_dir%
 )
 
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /out:%executable_name% %src%
+echo We compile it
+%cscomp% /out:%bin_path% %srcs%
+echo Build finished
 
 ::exit

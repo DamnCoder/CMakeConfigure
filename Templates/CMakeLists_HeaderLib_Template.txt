@@ -35,6 +35,8 @@ SOURCE_GROUP_BY_FOLDER("${HEADERS}")
 
 #[EXTERNAL_PROJECTS]
 
+#[EXTERNAL_TARGET]
+
 # Copy the include directory where the lib is installed
 INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/include DESTINATION ${LIBRARY_OUTPUT_PATH})
 

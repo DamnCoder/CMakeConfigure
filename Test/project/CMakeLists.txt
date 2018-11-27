@@ -1,8 +1,10 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 #[PROJECT_NAME]
+PROJECT(Test)
 
 #[BUILD_TYPE]
+SET(CMAKE_BUILD_TYPE Debug)
 
 # Set the output folders where the program will be created
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
@@ -12,6 +14,8 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../cmake_modules)
 SET(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/../cmake_include)
 SET(EXTERNALS_PATH ${PROJECT_SOURCE_DIR}/../externals)
 
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 INCLUDE(${CMAKE_INCLUDE_PATH}/CMake-Include.txt)
 
 # C++ Dialect
@@ -20,10 +24,16 @@ SET(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 SET(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
 
 #[PRJ_INCLUDE]
+INCLUDE_DIRECTORIES(include)
 
 #[PRJ_HEADER_FILES]
+SET(HEADERS
+)
 
 #[PRJ_SOURCE_FILES]
+SET(SOURCES
+	src/main.cpp
+)
 
 # Generate the executable from the sources
 ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCES} ${HEADERS})
@@ -36,8 +46,28 @@ SOURCE_GROUP_BY_FOLDER("${SOURCES}")
 SOURCE_GROUP_BY_FOLDER("${HEADERS}")
 
 #[EXTERNAL_PROJECTS]
+ADD_SUBDIRECTORY(${EXTERNALS_PATH}/project_a/project ${PROJECT_BINARY_DIR}/project_a/project)
+INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_a/project/include)
+
+ADD_SUBDIRECTORY(${EXTERNALS_PATH}/project_b/project ${PROJECT_BINARY_DIR}/project_b/project)
+INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_b/project/include)
+
+INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_a/externals/project_aa/project/include)
+INCLUDE_DIRECTORIES(${EXTERNALS_PATH}/project_a/externals/project_aa/externals/project_aaa/project/include)
+
+#ADD_DEPENDENCIES(${PROJECT_NAME} 
+	#PROJECT_B
+	#PROJECT_A
+#)
 
 #[EXTERNAL_TARGET]
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}
+	PROJECT_A
+	PROJECT_B
+	#project_aa
+	#project_aaa
+)
+
 
 # Set the location for executable installation
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${EXECUTABLE_OUTPUT_PATH})

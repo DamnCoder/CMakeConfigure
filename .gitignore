@@ -1,3 +1,6 @@
 CMakeConfigure/obj
 Build
 CMakeConfigureProject.userprefs
+.vs/
+Test/build_vs/
+*.attr
