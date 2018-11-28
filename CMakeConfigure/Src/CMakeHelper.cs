@@ -125,7 +125,6 @@ namespace CMakeConfigure
 			{
 				if (0 < project.Count)
 				{
-					Console.WriteLine("External Project: " + AddSubdirectory(project[0]));
 					outExternalProjects.Add(AddSubdirectory(project[0]));
 				}
 			}
@@ -139,7 +138,6 @@ namespace CMakeConfigure
 					for (int i=1; i < project.Count; ++i)
 					{
 						externalRootPath = Path.Combine(externalRootPath, project[i]);
-						Console.WriteLine("Include External of External Project: " + CreateIncludeExternal(externalRootPath));
 						outExternalProjects.Add(CreateIncludeExternal(externalRootPath));
 						externalRootPath = Path.Combine(externalRootPath, "externals");
 					}
